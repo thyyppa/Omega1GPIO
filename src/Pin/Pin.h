@@ -11,6 +11,7 @@ public:
     void high();
     void low();
     void setToOutput();
+    void setToInput();
 protected:
     int      pin;
     Registry registry;

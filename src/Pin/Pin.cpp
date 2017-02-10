@@ -12,6 +12,11 @@ void Pin::on()
     *( registry.address() + Registry::SET_OFFSET ) = 0x1 << this->pin;
 }
 
+void Pin::high()
+{
+    return this->on();
+}
+
 void Pin::off()
 {
     this->setToOutput();
@@ -19,18 +24,21 @@ void Pin::off()
     *( registry.address() + Registry::CLEAR_OFFSET ) = 0x1 << this->pin;
 }
 
-void Pin::setToOutput()
-{
-    registry.value ^= ( -1 ^ registry.value ) & ( 1 << this->pin );
-    *( registry.address()) = registry.value;
-}
-
-void Pin::high()
-{
-    return this->on();
-}
-
 void Pin::low()
 {
     return this->off();
+}
+
+void Pin::setToOutput()
+{
+    unsigned long int oe = *( registry.address() + registry.OE_OFFSET );
+    oe ^= ( -1 ^ oe ) & ( 1 << this->pin );
+    *( registry.address() + registry.OE_OFFSET ) = oe;
+}
+
+void Pin::setToInput()
+{
+    unsigned long int oe = *( registry.address() + registry.OE_OFFSET );
+    oe ^= ( 0 ^ oe ) & ( 1 << this->pin );
+    *( registry.address() + registry.OE_OFFSET ) = oe;
 }
