@@ -6,8 +6,8 @@
 #include <fcntl.h>
 
 struct Block {
-    const static int addr = 0x18040000;
-    const static int size = 0x30;
+    const static int address = 0x18040000;
+    const static int size    = 0x30;
 };
 
 struct Offsets {

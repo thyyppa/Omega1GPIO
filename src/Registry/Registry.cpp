@@ -9,7 +9,7 @@ Registry::Registry()
             PROT_READ | PROT_WRITE,
             MAP_SHARED,
             memory,
-            this->block.addr
+            this->block.address
     );
     close( memory );
 }
