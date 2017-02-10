@@ -24,3 +24,13 @@ void Pin::setToOutput()
     registry.value ^= ( -1 ^ registry.value ) & ( 1 << this->pin );
     *( registry.address()) = registry.value;
 }
+
+void Pin::high()
+{
+    return this->on();
+}
+
+void Pin::low()
+{
+    return this->off();
+}

@@ -8,6 +8,8 @@ public:
     Pin( int pin );
     void on();
     void off();
+    void high();
+    void low();
     void setToOutput();
 protected:
     int      pin;
