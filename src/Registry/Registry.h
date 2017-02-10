@@ -5,21 +5,27 @@
 #include <mhash.h>
 #include <fcntl.h>
 
+struct Block {
+    const static int addr = 0x18040000;
+    const static int size = 0x30;
+};
+
+struct Offsets {
+    const static int oe    = 0x00;
+    const static int in    = 0x01;
+    const static int out   = 0x02;
+    const static int set   = 0x03;
+    const static int clear = 0x04;
+};
+
 class Registry {
 public:
-    const static int  BLOCK_ADDR   = 0x18040000;
-    const static int  BLOCK_SIZE   = 0x30;
-    const static int  OE_OFFSET    = 0x00;
-    const static int  IN_OFFSET    = 0x01;
-    const static int  OUT_OFFSET   = 0x02;
-    const static int  SET_OFFSET   = 0x03;
-    const static int  CLEAR_OFFSET = 0x04;
-
     Registry();
+    Block             block;
+    Offsets           offset;
     unsigned long int value;
     unsigned long int *address = nullptr;
 protected:
 };
-
 
 #endif //REGISTRY_H
