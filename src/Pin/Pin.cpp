@@ -42,3 +42,14 @@ void Pin::setToInput()
     oe ^= ( 0 ^ oe ) & ( 1 << this->pin );
     *( registry.address + registry.offset.oe ) = oe;
 }
+
+/**
+ * Untested
+ * todo: test!
+ */
+unsigned long int Pin::read()
+{
+    unsigned long int reading;
+    reading = *( registry.address + registry.offset.in );
+    return (( reading >> this->pin ) & 0x01 );
+}

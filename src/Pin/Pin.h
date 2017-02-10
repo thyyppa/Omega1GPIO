@@ -12,6 +12,7 @@ public:
     void low();
     void setToOutput();
     void setToInput();
+    unsigned long int read();
 protected:
     int      pin;
     Registry registry;
