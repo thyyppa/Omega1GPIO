@@ -3,7 +3,7 @@
 Registry::Registry()
 {
     int memory = open( "/dev/mem", O_RDWR );
-    this->regAddress = (unsigned long *) mmap(
+    this->address = (unsigned long *) mmap(
             NULL,
             this->BLOCK_SIZE,
             PROT_READ | PROT_WRITE,
@@ -12,9 +12,4 @@ Registry::Registry()
             this->BLOCK_ADDR
     );
     close( memory );
-}
-
-unsigned long int *Registry::address()
-{
-    return this->regAddress;
 }

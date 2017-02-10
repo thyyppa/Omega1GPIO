@@ -16,10 +16,9 @@ public:
     const static int  CLEAR_OFFSET = 0x04;
 
     Registry();
-    unsigned long int *address();
     unsigned long int value;
+    unsigned long int *address = nullptr;
 protected:
-    unsigned long int *regAddress = nullptr;
 };
 
 
